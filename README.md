@@ -18,7 +18,7 @@ Shell texturing is commonly in the gaming industry, because of its good performa
 # Random Noise
 As a first step, a field of grass was implemented. To create the random noise required for this field, a script called ShellTexturing.cs was created in Unity. The script uses Unity’s random number generator to generate a float between 0 and 1 for each pixel in the texture. This number is then compared to some kind of boundary decided in the editor, which decides whether the texel should be filled in or not.
 
-<img width="460" height = "400 src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0df42e40-0b42-4276-af31-399157577b9e">
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0df42e40-0b42-4276-af31-399157577b9e">
 
 Fig. Randomly generated noise. 
 
@@ -42,41 +42,42 @@ is because not all grass blades will have the same height, com-
 paring it to the previous height will only allow some pixels to
 continue their grass growth. The result of this can be seen in the figure below.
 
-![fig_3](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/240e8fd3-32f6-454a-9153-659747dee7c0)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/240e8fd3-32f6-454a-9153-659747dee7c0">
 Fig. Different layers.
 
 The black pixels were then discarded, giving the result in the figure below. As can be seen in the pictures, the distance between layers is clearly noticeable. This distance can be tweaked, but with this technique the distance will always be there. This is a limitation in the shell texturing technique that can be improved upon, and will be discussed later.
 
-![fig_4](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/cf7916ce-ccee-4c0f-a5bd-b6e87420f016)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/cf7916ce-ccee-4c0f-a5bd-b6e87420f016">
 Fig. Black pixels discarded
 
 # Basic lighting 
 To make the use case more realistic, and to be able to see more details, we added some simple lighting and shading. The colour of each pixel is multiplied with the height of the grass to make the grass darker at its base and lighter at the top. The lighting will be improved upon later.
-![fig_6](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/804c8e88-4e02-408c-83dc-2b9838b40998)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/804c8e88-4e02-408c-83dc-2b9838b40998">
 
 # Cylindrical shape
 Hair strands are not shaped like rectangles, but rather rounded and cone shaped; bigger at the bottom and smaller at the top. This is the next thing that was modelled. The distance to the centre of the grass blade is calculated for each pixel, and if that distance is bigger than a certain predetermined thickness the pixel is discarded. In order to calculate the distance to the centre, some steps needed to be taken. First, the fractal part of the UV coordinate is multiplied with the resolution. This gives us the result seen in the figure below.
-![fig_7](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/5da7fcc6-3835-48fc-9dc5-21df871c0e64)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/5da7fcc6-3835-48fc-9dc5-21df871c0e64">
 
 Then, each UV coordinate was moved so that the origin is in the middle of the texel, instead of in the lower left corner. The result is in the figure below.
 
-![fig_8](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/4bd68500-a9c5-401b-97fc-09bf1ead7944)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/4bd68500-a9c5-401b-97fc-09bf1ead7944">
 
 From this, the distance from the origin, the middle of the grass blade, to the pixel can be calculated. The result of this is in the figure below.
 
-![fig_9](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/f5be9138-78e3-495c-a69c-737e846b57fe)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/f5be9138-78e3-495c-a69c-737e846b57fe">
 
 # Cone shape
 
 To create the cone shape, more pixels needed to be checked and discarded. If the distance to the centre of the blade is bigger than the thickness, multiplied with the randomly generated number subtracted by the height of the previous layer, the pixel should be discarded. As the layers stack up, the variable representing the height of the previous layer will become bigger, leading to the total thickness becoming smaller and smaller, and the blade becoming thinner and thinner. 
 ![fig_10](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/fbd6b57e-d57b-485d-b3cc-de807511395f)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/f5be9138-78e3-495c-a69c-737e846b57fe">
 ![fig_11](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/eba463de-adca-42aa-900a-a48be4824bed)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/f5be9138-78e3-495c-a69c-737e846b57fe">
 
 # Shape of the model
 Up until this point, the implementation only supported a plane, but to extend it to any shape, the code and thinking had to be altered. For a sphere, one could imagine scaling the mesh for each layer, but this wouldn’t work for all types of shapes. To decide the location for the next layer for an arbitrary shape, the normals of the vertices need to be taken into account. In the case of the plane/quad, the position of the layers was determined by the number of the current layer multiplied with the determined height of the grass, divided by the amount of layers. For an arbitrary shape, the same distance will be moved along the multiplied normal’s direction, for each vertex.
-
-![fig_13_a](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/3cc3f880-e5cf-4922-8986-4c4f65ff548e)
-![fig_17](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/dd8fafae-6793-4828-a98d-d6473cfd0836)
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/3cc3f880-e5cf-4922-8986-4c4f65ff548e">
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/dd8fafae-6793-4828-a98d-d6473cfd0836">
 
 # Colour of the fur
 To make the implementation more usable, it was extended to make the fur the colour of the texture.  
