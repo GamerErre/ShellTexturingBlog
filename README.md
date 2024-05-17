@@ -127,4 +127,7 @@ through displacing each vertex slightly downwards.
 
 <img width="460" alt="Skärmavbild 2024-05-17 kl  12 16 52" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/3c05fdfe-16b2-4c51-9a5e-525ab09c3d31">
 
+# Acknowledgements
+Big thank you to Garrett Gunnell (Acerola: https://youtu.be/9dr-tRQzij4?si=vDqkEK0Vgs6psj2h, https://github.com/GarrettGunnell) for inspiration to this project! The tutorial on shell texturing was extremely helpful.
+
 
