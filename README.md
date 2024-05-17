@@ -18,7 +18,8 @@ Shell texturing is commonly in the gaming industry, because of its good performa
 # Random Noise
 As a first step, a field of grass was implemented. To create the random noise required for this field, a script called ShellTexturing.cs was created in Unity. The script uses Unity’s random number generator to generate a float between 0 and 1 for each pixel in the texture. This number is then compared to some kind of boundary decided in the editor, which decides whether the texel should be filled in or not.
 
-![fig_1](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0df42e40-0b42-4276-af31-399157577b9e)
+<img width="460" height = "400 src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0df42e40-0b42-4276-af31-399157577b9e">
+
 Fig. Randomly generated noise. 
 
 # Layers
