@@ -74,8 +74,8 @@ To create the cone shape, more pixels needed to be checked and discarded. If the
 
 # Shape of the model
 Up until this point, the implementation only supported a plane, but to extend it to any shape, the code and thinking had to be altered. For a sphere, one could imagine scaling the mesh for each layer, but this wouldn’t work for all types of shapes. To decide the location for the next layer for an arbitrary shape, the normals of the vertices need to be taken into account. In the case of the plane/quad, the position of the layers was determined by the number of the current layer multiplied with the determined height of the grass, divided by the amount of layers. For an arbitrary shape, the same distance will be moved along the multiplied normal’s direction, for each vertex.
-<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/3cc3f880-e5cf-4922-8986-4c4f65ff548e">
-<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/dd8fafae-6793-4828-a98d-d6473cfd0836">
+<img width="460" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/3cc3f880-e5cf-4922-8986-4c4f65ff548e">
+<img width="460" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/dd8fafae-6793-4828-a98d-d6473cfd0836">
 
 # Colour of the fur
 To make the implementation more usable, it was extended to make the fur the colour of the texture.  
