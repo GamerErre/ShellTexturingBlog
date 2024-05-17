@@ -13,7 +13,7 @@ https://youtu.be/fNlnBNDZTOo?si=uimHbqeHfUmmQtk9
 # 1 Introduction
 In this project we create a Unity project that implements basic shell texturing to simulate fur using a custom made shader. We extend the technique by implementing simple movement, control of the degree of fur on different parts of the model, as well was Blinn-Phong shading.
 
-Shell texturing is commonly in the gaming industry, because of its good performance and the simplicity of the technique. It can be used to easily make luscious fields of grass, as well as animals covered with million strands of fur. The technique has been used in games like Dark Souls and Genshin Impact.
+Shell texturing is commonly in the gaming industry, because of its good performance and the simplicity of the technique. It can be used to easily make luscious fields of grass, as well as animals covered with million strands of fur. 
 
 # 2 Implementation
 
