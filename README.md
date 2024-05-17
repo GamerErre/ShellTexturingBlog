@@ -4,7 +4,7 @@
 
 <iframe frameborder="0" src="https://itch.io/embed/2713580" width="552" height="167"><a href="https://stan4dbunny.itch.io/shell-texturing">Shell texturing for fur simulation by stan4dbunny</a></iframe>
 
-<iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/fNlnBNDZTOo&origin=https://stan4dbunny.github.io" frameborder="0"></iframe>
+<div style="text-align: center;"><iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/fNlnBNDZTOo&origin=https://stan4dbunny.github.io" frameborder="0"></iframe></div>
 
 https://youtu.be/fNlnBNDZTOo?si=uimHbqeHfUmmQtk9
 
