@@ -69,10 +69,8 @@ From this, the distance from the origin, the middle of the grass blade, to the p
 # Cone shape
 
 To create the cone shape, more pixels needed to be checked and discarded. If the distance to the centre of the blade is bigger than the thickness, multiplied with the randomly generated number subtracted by the height of the previous layer, the pixel should be discarded. As the layers stack up, the variable representing the height of the previous layer will become bigger, leading to the total thickness becoming smaller and smaller, and the blade becoming thinner and thinner. 
-![fig_10](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/fbd6b57e-d57b-485d-b3cc-de807511395f)
-<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/f5be9138-78e3-495c-a69c-737e846b57fe">
-![fig_11](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/eba463de-adca-42aa-900a-a48be4824bed)
-<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/f5be9138-78e3-495c-a69c-737e846b57fe">
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/fbd6b57e-d57b-485d-b3cc-de807511395f">
+<img width="460" height = "400" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/eba463de-adca-42aa-900a-a48be4824bed">
 
 # Shape of the model
 Up until this point, the implementation only supported a plane, but to extend it to any shape, the code and thinking had to be altered. For a sphere, one could imagine scaling the mesh for each layer, but this wouldn’t work for all types of shapes. To decide the location for the next layer for an arbitrary shape, the normals of the vertices need to be taken into account. In the case of the plane/quad, the position of the layers was determined by the number of the current layer multiplied with the determined height of the grass, divided by the amount of layers. For an arbitrary shape, the same distance will be moved along the multiplied normal’s direction, for each vertex.
@@ -107,8 +105,8 @@ When a strand is about to be displaced into the model, it means that the displac
 # Blinn-Phong
 Since hair is specular, we want to take that into account. A good model for this is the Blinn-Phong model. While it is not physically accurate, it can provide good looking results. The diffuse, ambient, and specular part are calculated and then added together. The specular part is based mainly on the half angle between the view angle direction and the light direction. This angle is then raised to the specular power, and the product of this is multiplied with the specular strength. The specular power determines the focus of the specularity, and the strength determines the brightness. This factor is multiplied with the component wise multiplication of the colour of the light source and the specular colour. The diffuse part of the colour is determined by the colour of the surface multiplied component wise with the colour of the light. Then, the result of the component wise multiplication is multiplied with the dot product between the normal and direction of the light. The ambient part of the colour is calculated from Unit's ShadeSH9 function. This will make the colour depend on the surrounding environment. Additionally to the Blinn-Phong model, the colour is still multiplied at the end with the height of the previous layer, to make the hairs darker at the base and lighter at the top. 
 
-<img width="460" alt="Skärmavbild 2024-05-17 kl  00 32 15" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/7958502d-18b8-4064-a517-531e2ffb2199">
-<img width="460" alt="BlinnPhongBunnyShade" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/83601e21-b5c4-4637-86c1-8f64311ff8c5">
+<img width="460" height = "400" alt="Skärmavbild 2024-05-17 kl  00 32 15" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/7958502d-18b8-4064-a517-531e2ffb2199">
+<img width="460" height = "400" alt="BlinnPhongBunnyShade" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/83601e21-b5c4-4637-86c1-8f64311ff8c5">
 
 # Drooping
 When the object is not in motion, the hairs should still be
