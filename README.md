@@ -77,8 +77,41 @@ To create the cone shape, more pixels needed to be checked and discarded. If the
 ![fig_10](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/fbd6b57e-d57b-485d-b3cc-de807511395f)
 ![fig_11](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/eba463de-adca-42aa-900a-a48be4824bed)
 
+# Shape of the model
+Up until this point, the implementation only supported a plane, but to extend it to any shape, the code and thinking had to be altered. For a sphere, one could imagine scaling the mesh for each layer, but this wouldn’t work for all types of shapes. To decide the location for the next layer for an arbitrary shape, the normals of the vertices need to be taken into account. In the case of the plane/quad, the position of the layers was determined by the number of the current layer multiplied with the determined height of the grass, divided by the amount of layers. For an arbitrary shape, the same distance will be moved along the multiplied normal’s direction, for each vertex.
 
-<img width="460" alt="fig_20" src="https://github.com/GamerErre/Shell-Texturing/assets/107579396/d9fa7b91-4af0-42f0-abbf-9537c512c2f3">
+![fig_13_a](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/3cc3f880-e5cf-4922-8986-4c4f65ff548e)
+![fig_17](https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/dd8fafae-6793-4828-a98d-d6473cfd0836)
+
+# Colour of the fur
+To make the implementation more usable, it was extended to make the fur the colour of the texture.  
+
+# Fur placement
+As was seen in the fluffy bunny above, the bunny has fur everywhere, but realistically it shouldn’t have fur in its eyes and on the inside of the ears. Also, it would be beneficial to be able to have various fur length on different places of the model. To solve this, the model was drawn on in a grayscale brush using TexturePaint in Blender. In the map, black is fur, white is no fur, and grey is some fur. Then, in the shader for each vertex, the greyscale texture is sampled and the value at that vertex is used to scale the height of the new layer. Per pixel, it's checked if the height is smaller than a predetermined, short height, and if it is so, the colour at that pixel is set to that of the model. 
 
 <img width="460" alt="fig_19" src="https://github.com/GamerErre/Shell-Texturing/assets/107579396/2cb641ba-5ad0-4135-af89-03a3b0ea067b">
+<img width="460" alt="fig_20" src="https://github.com/GamerErre/Shell-Texturing/assets/107579396/d9fa7b91-4af0-42f0-abbf-9537c512c2f3">
+Fig. Various fur length. Shorter on ears, longer on body.
+
+The figure also illustrates an artefact that shows up with the shell texturing technique. 
+
+<img width="81" alt="fig_21 (1)" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/866e828f-4b59-4766-924f-5fc0c3fe0f44">
+Fig. It can be seen that at the edge of the model, the layers become quite visible. The possible solutions to this will be discussed later. 
+
+# Movement 
+Realistically, the fur should move when the object is moved. The general idea is that the fur should move in the opposite direction of the movement. To do this, and to make the force affect the top of the strands more than the base, each vertex is displaced with a determined displacement strength, multiplied by the current layer height divided by the amount of total layers, and then this is multiplied with the negated velocity. This predicted displacement can however displace strands into the model, which is undesirable. 
+
+<img width="503" alt="MovingLeftArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0f9c30d9-6bb8-43df-af37-6c4ba39bd39a">
+<img width="475" alt="MovingRightArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/e0698052-3837-4050-b865-c9e644011833">
+
+When a strand is about to be displaced into the model, it means that the displacement vector and the normal of the surface are pointing in opposite directions.
+
+<img width="286" alt="DisplacementDiagram" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/600e7e0e-0f25-4ea5-b873-1f11749d5ee6">
+
+# Blinn-Phong
+Since hair is specular, we want to take that into account. A good model for this is the Blinn-Phong model. While it is not physically accurate, it can provide good looking results. The diffuse, ambient, and specular part are calculated and then added together. The specular part is based mainly on the half angle between the view angle direction and the light direction. This angle is then raised to the specular power, and the product of this is multiplied with the specular strength. The specular power determines the focus of the specularity, and the strength determines the brightness. This factor is multiplied with the component wise multiplication of the colour of the light source and the specular colour. The diffuse part of the colour is determined by the colour of the surface multiplied component wise with the colour of the light. Then, the result of the component wise multiplication is multiplied with the dot product between the normal and direction of the light. The ambient part of the colour is calculated from Unit's ShadeSH9 function. This will make the colour depend on the surrounding environment. Additionally to the Blinn-Phong model, the colour is still multiplied at the end with the height of the previous layer, to make the hairs darker at the base and lighter at the top. 
+
+<img width="460" alt="Skärmavbild 2024-05-17 kl  00 32 15" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/7958502d-18b8-4064-a517-531e2ffb2199">
+<img width="458" alt="BlinnPhongBunnyShade" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/83601e21-b5c4-4637-86c1-8f64311ff8c5">
+
 
