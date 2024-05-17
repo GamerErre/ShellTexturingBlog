@@ -2,6 +2,8 @@
 <img width="460" height = "400" alt="Skärmavbild 2024-05-17 kl  00 32 15" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/7958502d-18b8-4064-a517-531e2ffb2199">
 <img width="460" height = "400" alt="BlinnPhongBunnyShade" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/83601e21-b5c4-4637-86c1-8f64311ff8c5">
 
+# Demo
+Move around with left and right arrow keys
 <iframe frameborder="0" src="https://itch.io/embed/2713580" width="552" height="167"><a href="https://stan4dbunny.itch.io/shell-texturing">Shell texturing for fur simulation by stan4dbunny</a></iframe>
 
 <div><iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/fNlnBNDZTOo&origin=https://stan4dbunny.github.io" frameborder="0"></iframe></div>
