@@ -95,8 +95,8 @@ Fig. It can be seen that at the edge of the model, the layers become quite visib
 # Movement 
 Realistically, the fur should move when the object is moved. The general idea is that the fur should move in the opposite direction of the movement. To do this, and to make the force affect the top of the strands more than the base, each vertex is displaced with a determined displacement strength, multiplied by the current layer height divided by the amount of total layers, and then this is multiplied with the negated velocity. This predicted displacement can however displace strands into the model, which is undesirable. 
 
-<img width="460" alt="MovingLeftArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0f9c30d9-6bb8-43df-af37-6c4ba39bd39a">
-<img width="460" alt="MovingRightArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/e0698052-3837-4050-b865-c9e644011833">
+<img width="460" height = "400" alt="MovingLeftArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0f9c30d9-6bb8-43df-af37-6c4ba39bd39a">
+<img width="460" height = "400" alt="MovingRightArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/e0698052-3837-4050-b865-c9e644011833">
 
 When a strand is about to be displaced into the model, it means that the displacement vector and the normal of the surface are pointing in opposite directions.
 
