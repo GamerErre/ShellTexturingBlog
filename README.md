@@ -9,18 +9,9 @@
 https://youtu.be/fNlnBNDZTOo?si=uimHbqeHfUmmQtk9
 
 # 1 Introduction
-In this project we create a Unity project that implements basic
-shell texturing to simulate fur using a custom made shader. We
-extend the technique by implementing simple movement, con-
-trol of the degree of fur on different parts of the model, as well
-was Blinn-Phong shading.
+In this project we create a Unity project that implements basic shell texturing to simulate fur using a custom made shader. We extend the technique by implementing simple movement, control of the degree of fur on different parts of the model, as well was Blinn-Phong shading.
 
-Shell texturing is commonly in the gaming industry, be-
-cause of its good performance and the simplicity of the tech-
-nique. It can be used to easily make luscious fields of grass,
-as well as animals covered with million strands of fur. The
-technique has been used in games like Dark Souls and Genshin
-Impact.
+Shell texturing is commonly in the gaming industry, because of its good performance and the simplicity of the technique. It can be used to easily make luscious fields of grass, as well as animals covered with million strands of fur. The technique has been used in games like Dark Souls and Genshin Impact.
 
 # 2 Implementation
 
@@ -32,9 +23,7 @@ Fig. Randomly generated noise.
 
 # Layers
 
-To create the illusion of height many of these layers should
-be stacked on top of one another. For performance rea-
-sons, this was done on the GPU. To accomplish this, Unity
+To create the illusion of height many of these layers should be stacked on top of one another. For performance reasons, this was done on the GPU. To accomplish this, Unity
 Shaders were used. The shader code can be found in
 FurShader.shader. When the layers were introduced,
 it was instead needed to send the random value to the
