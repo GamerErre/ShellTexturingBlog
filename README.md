@@ -95,23 +95,30 @@ Fig. Various fur length. Shorter on ears, longer on body.
 
 The figure also illustrates an artefact that shows up with the shell texturing technique. 
 
-<img width="81" alt="fig_21 (1)" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/866e828f-4b59-4766-924f-5fc0c3fe0f44">
+<img width="460" alt="fig_21 (1)" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/866e828f-4b59-4766-924f-5fc0c3fe0f44">
 Fig. It can be seen that at the edge of the model, the layers become quite visible. The possible solutions to this will be discussed later. 
 
 # Movement 
 Realistically, the fur should move when the object is moved. The general idea is that the fur should move in the opposite direction of the movement. To do this, and to make the force affect the top of the strands more than the base, each vertex is displaced with a determined displacement strength, multiplied by the current layer height divided by the amount of total layers, and then this is multiplied with the negated velocity. This predicted displacement can however displace strands into the model, which is undesirable. 
 
-<img width="503" alt="MovingLeftArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0f9c30d9-6bb8-43df-af37-6c4ba39bd39a">
-<img width="475" alt="MovingRightArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/e0698052-3837-4050-b865-c9e644011833">
+<img width="460" alt="MovingLeftArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/0f9c30d9-6bb8-43df-af37-6c4ba39bd39a">
+<img width="460" alt="MovingRightArtefact" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/e0698052-3837-4050-b865-c9e644011833">
 
 When a strand is about to be displaced into the model, it means that the displacement vector and the normal of the surface are pointing in opposite directions.
 
-<img width="286" alt="DisplacementDiagram" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/600e7e0e-0f25-4ea5-b873-1f11749d5ee6">
+<img width="460" alt="DisplacementDiagram" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/600e7e0e-0f25-4ea5-b873-1f11749d5ee6">
 
 # Blinn-Phong
 Since hair is specular, we want to take that into account. A good model for this is the Blinn-Phong model. While it is not physically accurate, it can provide good looking results. The diffuse, ambient, and specular part are calculated and then added together. The specular part is based mainly on the half angle between the view angle direction and the light direction. This angle is then raised to the specular power, and the product of this is multiplied with the specular strength. The specular power determines the focus of the specularity, and the strength determines the brightness. This factor is multiplied with the component wise multiplication of the colour of the light source and the specular colour. The diffuse part of the colour is determined by the colour of the surface multiplied component wise with the colour of the light. Then, the result of the component wise multiplication is multiplied with the dot product between the normal and direction of the light. The ambient part of the colour is calculated from Unit's ShadeSH9 function. This will make the colour depend on the surrounding environment. Additionally to the Blinn-Phong model, the colour is still multiplied at the end with the height of the previous layer, to make the hairs darker at the base and lighter at the top. 
 
 <img width="460" alt="Skärmavbild 2024-05-17 kl  00 32 15" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/7958502d-18b8-4064-a517-531e2ffb2199">
-<img width="458" alt="BlinnPhongBunnyShade" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/83601e21-b5c4-4637-86c1-8f64311ff8c5">
+<img width="460" alt="BlinnPhongBunnyShade" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/83601e21-b5c4-4637-86c1-8f64311ff8c5">
+
+# Drooping
+When the object is not in motion, the hairs should still be
+drooping down slightly from gravity. This was implemented
+through displacing each vertex slightly downwards.
+
+<img width="460" alt="Skärmavbild 2024-05-17 kl  12 16 52" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/3c05fdfe-16b2-4c51-9a5e-525ab09c3d31">
 
 
