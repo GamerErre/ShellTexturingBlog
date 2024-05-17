@@ -2,7 +2,7 @@
 <img width="460" alt="Skärmavbild 2024-05-17 kl  00 32 15" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/7958502d-18b8-4064-a517-531e2ffb2199">
 <img width="458" alt="BlinnPhongBunnyShade" src="https://github.com/stan4dbunny/Shell-Texturing/assets/107579396/83601e21-b5c4-4637-86c1-8f64311ff8c5">
 
-https://youtu.be/fNlnBNDZTOo
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fNlnBNDZTOo?si=hFmpd2hMcuUGWL1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 # 1 Introduction
 In this project we create a Unity project that implements basic
