@@ -6,10 +6,6 @@
 Move around with left and right arrow keys
 <iframe frameborder="0" src="https://itch.io/embed/2713580" width="552" height="167"><a href="https://stan4dbunny.itch.io/shell-texturing">Shell texturing for fur simulation by stan4dbunny</a></iframe>
 
-<div><iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/fNlnBNDZTOo&origin=https://stan4dbunny.github.io" frameborder="0"></iframe></div>
-
-https://youtu.be/fNlnBNDZTOo?si=uimHbqeHfUmmQtk9
-
 # 1 Introduction
 In this project we create a Unity project that implements basic shell texturing to simulate fur using a custom made shader. We extend the technique by implementing simple movement, control of the degree of fur on different parts of the model, as well was Blinn-Phong shading.
 
